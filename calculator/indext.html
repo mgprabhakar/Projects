@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 style="text-align: center;color: blue;">Calculator</h1>
+    <div>
+        <div>
+            <label> Number 1: </label>
+            <br><input type="number" id="num1" placeholder="Type any interger (-3,-2,-1,0,1,2,3,....) " onkeyup="ShowNum(this.value)"/>
+        </div>
+        <div>
+            <lebel>Number 2:</lebel>
+            <br><input type="number" id="num2" placeholder="Type any interger (-3,-2,-1,0,1,2,3,....)"/>
+        </div>
+        <div>
+            <label> Operator:</label>
+            <select id="operator">
+                <option value=" ">--Choose an operator--</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
+            <br><br>
+        </div>
+    </div>
+    <div>
+        <button class="cal-btn" onclick="calculate()" >Calculate</button>
+        <p><div class="num-img" id="showNum" style="text-align: center;"></div></p>
+    </div>
+    <div>
+        <label>Result:</label>
+        <br><input type="text" id="result" readonly/>
+    </div>
+    <div>
+        Fetched Data:
+        <div></div>
+    </div>
+    <script type="text/javascript">
+        function calculate() {
+            let num1=parseInt (document.getElementById('num1').value);
+            let num2=parseInt (document.getElementById('num2').value);
+            let operator=document.getElementById('operator').value;
+            let result;
+
+            switch (operator) {
+                case '+':
+                    result=num1+num2;
+                    break;
+                case '-':
+                    result=num1-num2;
+                    break;
+                case '*':
+                    result=num1*num2;
+                    break;
+                
+                case '/':
+                    
+                    if (num2===0) {
+                        result='Cannot divided by zero!';
+                    }
+                    else{
+                        result=num1/num2;
+                    }
+                    break;
+                case '%':
+                    result=num1%num2;
+                    break;
+                default:
+                    result='Invalid operator! ';
+                }
+
+            document.getElementById('result').value=result;
+
+            }
+        
+        function ShowNum(text) {
+            document.getElementById('showNum').innerHTML=text;
+            document.getElementById('showNum').style.color='grey';
+            document.getElementById('showNum').style.fontSize='150px';
+            
+        }
+        
+    </script>
+    
+</body>
+</html>
